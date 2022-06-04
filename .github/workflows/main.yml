@@ -62,5 +62,5 @@ jobs:
          with:
                to: ${{ secrets.TELEGRAM_TO }}
                token: ${{ secrets.TELEGRAM_TOKEN }}
-               message: The build was a fail!
+               message: The build was a failure!
 
