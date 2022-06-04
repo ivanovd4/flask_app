@@ -47,7 +47,6 @@ jobs:
      runs-on: ubuntu-latest
      needs: Docker
      steps:
-       - name: Check
        - if: ${{ success() }}
          uses: appleboy/telegram-action@master
          with:
