@@ -33,12 +33,13 @@ jobs:
       
        - name: Build and push
          id: docker_build
-         uses: docker/build-push-action@v2
-         with:
-            context: ./
-            file: ./Dockerfile
-            push: true
-            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flask_app:latest
+#          uses: docker/build-push-action@v2
+#          with:
+#             context: ./
+#             file: ./Dockerfile
+#             push: true
+#             tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flask_app:latest
+         run: exit 1
 
        - if: ${{ steps.docker_build.outcome == 'success' }}
          uses: appleboy/telegram-action@master
