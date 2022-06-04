@@ -14,7 +14,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+
   Docker:
      runs-on: ubuntu-latest
      steps:
@@ -36,7 +36,7 @@ jobs:
          uses: docker/build-push-action@v2
          with:
             context: ./
-            file: ./Dockerfile
+            file: ./Dockerfil
             push: true
             tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flask_app:latest
       
@@ -49,10 +49,13 @@ jobs:
      steps:
        - name: Check
          uses: appleboy/telegram-action@master
+       - if: ${{ success() }}
          with:
                to: ${{ secrets.TELEGRAM_TO }}
                token: ${{ secrets.TELEGRAM_TOKEN }}
-               if: ${{ steps.build.outcome == 'success' }}
                message: The build was a success!
-     
-       
+       - if: ${{ failure() }}
+         with:
+               to: ${{ secrets.TELEGRAM_TO }}
+               token: ${{ secrets.TELEGRAM_TOKEN }}
+               message: The build was a fail!
