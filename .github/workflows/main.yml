@@ -41,7 +41,9 @@ jobs:
             tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flask_app:latest
       
        - name: Image digest
-         run: echo ${{steps.docker_build.outputs.digest }}
+         run: |
+           echo ${{steps.docker_build.outputs.digest }}
+           exit 1
   
   Check:
      runs-on: ubuntu-latest
