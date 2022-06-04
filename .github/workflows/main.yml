@@ -40,7 +40,7 @@ jobs:
 #             push: true
 #             tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flask_app:latest
          run: exit 2
-         continue-on-error: true
+#          continue-on-error: true
   
   Check:
     runs-on: ubuntu-latest
