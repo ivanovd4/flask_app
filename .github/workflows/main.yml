@@ -44,6 +44,7 @@ jobs:
   
   Check:
     runs-on: ubuntu-latest
+    needs: Docker
     if: always()
     steps:
        - if: ${{ steps.docker_build.outcome == 'success' }}
